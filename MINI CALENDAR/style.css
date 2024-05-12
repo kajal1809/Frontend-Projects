@@ -1,0 +1,59 @@
+body{
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh; 
+   background-image: radial-gradient(rgb(227,83,227),rgb(74,102,241));
+}
+
+.calendar{
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 5px 5px 5px;
+    
+}
+
+#left, #right{
+    height: 35vh;
+    width: 13vw;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#left{
+    background-color: deeppink;
+    cursor: pointer;
+}
+
+#right{
+    background-color: goldenrod;
+}
+
+#date{
+    font-size: 90px;
+    font-weight: 600;
+}
+#day, #year{
+    font-size: 30px;
+}
+
+#month{
+    font-size: 50px;
+    color: antiquewhite;
+    margin: 20px;
+}
+
+#left:hover{
+    background-color: rgb(212, 73, 143);
+}
+#right:hover{
+    background-color: rgb(183, 170, 25);
+}

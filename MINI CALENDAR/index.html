@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calendar">
+        <div id="left">
+            <div id="date"></div>
+            <div id="day"></div>
+        </div>
+        <div id="right">
+            <div id="month"></div>
+            <div id="year"></div>
+        </div>
+    </div>
+
+    <script>
+        const date = new Date()
+        const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturaday"]
+        const months= ["January","February","March","April","May","June","July",
+            "August","September","October","November","December"];
+
+        document.getElementById('date').innerHTML = date.getDate()
+        document.getElementById('day').innerHTML = weekDay[date.getDay()]
+        document.getElementById('month').innerHTML = months[date.getMonth()]
+        document.getElementById('year').innerHTML = date.getFullYear()
+    </script>
+</body>
+</html>
