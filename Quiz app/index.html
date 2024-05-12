@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div id="box">
+            <h2 id="quesBox">1) This is the dummy question</h2>
+            <div class="row">
+                <input type="radio" class="options" id="option1" value="a" name="option">
+                <label for="option1"> Option 1</label>
+            </div>
+            <div class="row">
+                <input type="radio" class="options" id="option2" value="b" name="option">
+                <label for="option2"> Option 2</label>
+            </div>
+            <div class="row">
+                <input type="radio" class="options" id="option3" value="c" name="option">
+                <label for="option3"> Option 3</label>
+            </div>
+            <div class="row">
+                <input type="radio" class="options" id="option4" value="d" name="option">
+                <label for="option4"> Option 4</label>
+            </div>
+            <button type="submit" class="btn" onclick="submitQuiz()">
+                Submit
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        const questions = [
+            {
+                'question': 'Which of the following is a markup language?',
+                'a': 'CSS',
+                'b': 'HTML',
+                'c': 'PHP',
+                'd': 'Javascript',
+                'correct': 'a'
+            },
+            {
+                'question': 'What year was Javascript launched?',
+                'a': '1996',
+                'b': '1995',
+                'c': '1994',
+                'd': 'none of the above',
+                'correct': 'b'
+
+            },
+            {
+                'question': 'What does CSS stands for?',
+                'a': 'Hypertext Markup Language',
+                'b': 'Cascading Style Sheet',
+                'c': 'Jason Object Notation',
+                'd': 'Helicopters Terminals Motorboats Lamborginis',
+                'correct': 'b'
+
+            }
+        ]
+
+        let index = 0;
+        let total = questions.length;
+        let right = 0, wrong=0;
+        const queBox = document.querySelector('#quesBox')
+        const OptionInputs = document.querySelectorAll('.options')
+        const loadQuestion = () => {
+            if(index === total){
+                return endQuiz();
+            }
+            reset();
+            const data = questions[index]
+            queBox.innerHTML = `${index + 1}) ${data.question}`;
+            OptionInputs[0].nextElementSibling.innerHTML = data.a;
+            OptionInputs[1].nextElementSibling.innerHTML = data.b;
+            OptionInputs[2].nextElementSibling.innerHTML = data.c;
+            OptionInputs[3].nextElementSibling.innerHTML = data.d;
+        }
+
+
+        const submitQuiz = () => {
+            const data = questions[index]
+            const ans = getAnswer()
+            if(ans == data.correct){
+                right++;
+            }
+            else{
+                wrong++;
+            }
+            index++;
+            loadQuestion();
+            return;
+        }
+
+        const getAnswer = () => {
+            let answer;
+            OptionInputs.forEach((input) => {
+                if (input.checked) {
+                    answer =  input.value;
+                }
+            }
+        )
+        return answer;
+        }
+
+        const reset = () => {
+            OptionInputs.forEach((input) => {
+                input.checked = false;
+            })
+        }
+
+        const endQuiz = () => {
+            document.getElementById("box").innerHTML = `
+            <div style ="text-align:center">
+                <h3> Thank you for playing the quiz.</h3>
+                <h2> ${right} / ${total} are correct</h2>
+            </div>
+            `
+        }
+
+        // initial call
+        loadQuestion();
+    </script>
+
+</body>
+
+</html>
